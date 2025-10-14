@@ -24,7 +24,7 @@ phases:
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin
       # Build image using Docker Hub format: username/repo:tag
       - docker build -t "$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" .
-      # push image to Docker Hub
+      # Push image to Docker Hub
       - docker push "$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
 
   post_build:
@@ -34,4 +34,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: ../simple-python-app
+  base-directory: day-14/simple-python-app

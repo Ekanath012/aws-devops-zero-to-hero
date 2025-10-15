@@ -22,14 +22,14 @@ phases:
       - echo "Logging into Docker Hub..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin
       - echo "Building Docker image..."
-      - docker build -t "$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" .
+      - docker build -t "${DOCKER_REGISTRY_USERNAME}/simple-python-flask-app:latest" .
       - echo "Pushing image to Docker Hub..."
-      - docker push "$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
+      - docker push "${DOCKER_REGISTRY_USERNAME}/simple-python-flask-app:latest"
 
   post_build:
     commands:
       - echo "Build completed successfully!"
-      - echo "Docker image: $DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
+      - echo "Docker image: ${DOCKER_REGISTRY_USERNAME}/simple-python-flask-app:latest"
 
 artifacts:
   files:
